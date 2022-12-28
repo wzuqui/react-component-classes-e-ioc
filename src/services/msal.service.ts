@@ -5,7 +5,8 @@ export class MsalService {
     return new Promise((resolve) => {
       console.group(MsalService.name);
       console.info('iniciado login');
-      console.info('aguardando 2 segundos...');
+      const __TEMPO__ = 1;
+      console.info(`aguardando ${__TEMPO__} segundos...`);
       setTimeout(() => {
         resolve({
           avatar: 'https://github.com/wzuqui.png',
@@ -14,7 +15,7 @@ export class MsalService {
         });
         console.info('finalizado login');
         console.groupEnd();
-      }, 2_000);
+      }, __TEMPO__ * 1000);
     });
   }
 }

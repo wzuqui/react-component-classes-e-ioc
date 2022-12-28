@@ -1,6 +1,8 @@
 import React from 'react';
-import { Children, Component, PropsWithChildren } from 'react';
+import { Component, PropsWithChildren } from 'react';
 
+import { MenuIcon } from '../assets/menu-icon';
+import { Button, ButtonProps } from '../components/button';
 import { ioc } from '../ioc/container';
 import { ApplicationService } from '../services/application.service';
 import { IUser } from '../services/user.service.type';
@@ -43,7 +45,9 @@ export class Application extends Component<ApplicationProps, ApplicationState> {
       <Container className="Application">
         <Header>
           <Header.Item>
-            <BotaoMenu />
+            <Header.Menu>
+              <MenuIcon />
+            </Header.Menu>
             {logo}
           </Header.Item>
           <Header.Item>perfil aqui</Header.Item>
@@ -66,34 +70,49 @@ const Container = styled('div', {
   height: '100vh',
 });
 const Main = styled('main', {});
-const BotaoMenu = styled('button', {});
 
-function Header(
-  props: React.PropsWithChildren<{}> & React.HTMLAttributes<HTMLElement>
-) {
+function Header({
+  children,
+  ...props
+}: React.PropsWithChildren<{}> & React.HTMLAttributes<HTMLElement>) {
   const Container = styled('header', {
     alignItems: 'center',
+    backgroundColor: '$gray',
     display: 'flex',
     justifyContent: 'space-between',
   });
-  const { children } = props;
   return (
-    <Container className="Header" {...props}>
+    <Container {...props} className="Header">
       {children}
     </Container>
   );
 }
 
-Header.Item = function HeaderItem(
-  props: React.PropsWithChildren<{}> & React.HTMLAttributes<HTMLElement>
-) {
+Header.Item = function HeaderItem({
+  children,
+  ...props
+}: React.PropsWithChildren<{}> & React.HTMLAttributes<HTMLElement>) {
   const Container = styled('div', {
     alignItems: 'center',
     display: 'flex',
   });
-  const { children } = props;
   return (
-    <Container className="Item" {...props}>
+    <Container {...props} className="Item">
+      {children}
+    </Container>
+  );
+};
+
+Header.Menu = function HeaderMenu({
+  children,
+  ...props
+}: React.PropsWithChildren<{}> & React.HTMLAttributes<HTMLElement>) {
+  const Container = styled(Button, {
+    height: 24,
+    width: 24,
+  });
+  return (
+    <Container {...props} className="Menu">
       {children}
     </Container>
   );
