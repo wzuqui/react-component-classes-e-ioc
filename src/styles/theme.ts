@@ -3,6 +3,7 @@ import { createStitches } from '@stitches/react';
 export const { styled, css, globalCss } = createStitches({
   theme: {
     colors: {
+      primary: '#5753B6',
       gray: 'rgb(233, 233, 233)',
     },
     fonts: {

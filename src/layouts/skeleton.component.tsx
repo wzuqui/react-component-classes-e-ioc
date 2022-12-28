@@ -1,5 +1,6 @@
 import { Component } from 'react';
 
+import { Button } from '../components/button';
 import { styled } from '../styles/theme';
 
 interface SkeletonProps {
@@ -33,4 +34,21 @@ const Container = styled('div', {});
 const Header = styled('header', {});
 const Title = styled('h1', {});
 const Breadcrumbs = styled('nav', {});
-const Close = styled('button', {});
+
+function Close() {
+  const Container = styled(Button, {
+    height: 24,
+    overflow: 'hidden',
+    position: 'relative',
+    width: 24,
+    span: {
+      position: 'absolute',
+      left: -1000,
+    },
+  });
+  return (
+    <Container className="Close" type="button">
+      <span>Fechar</span>
+    </Container>
+  );
+}

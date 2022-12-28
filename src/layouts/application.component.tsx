@@ -2,7 +2,7 @@ import React from 'react';
 import { Component, PropsWithChildren } from 'react';
 
 import { MenuIcon } from '../assets/menu-icon';
-import { Button, ButtonProps } from '../components/button';
+import { Button } from '../components/button';
 import { ioc } from '../ioc/container';
 import { ApplicationService } from '../services/application.service';
 import { IUser } from '../services/user.service.type';
@@ -59,6 +59,8 @@ export class Application extends Component<ApplicationProps, ApplicationState> {
 
   static Header = {
     Logo: styled('div', {
+      alignItems: 'center',
+      display: 'flex',
       width: '60px',
     }),
   };
@@ -109,10 +111,17 @@ Header.Menu = function HeaderMenu({
 }: React.PropsWithChildren<{}> & React.HTMLAttributes<HTMLElement>) {
   const Container = styled(Button, {
     height: 24,
+    overflow: 'hidden',
+    position: 'relative',
     width: 24,
+    span: {
+      position: 'absolute',
+      left: -1000,
+    },
   });
   return (
-    <Container {...props} className="Menu">
+    <Container {...props} className="Menu" type="button" stylingMode="text">
+      <span>Menu</span>
       {children}
     </Container>
   );

@@ -1,4 +1,4 @@
-import { Logo } from './assets/logo';
+import { LogoSvg } from './assets/logo-svg';
 import { Application } from './layouts/application.component';
 import { Skeleton } from './layouts/skeleton.component';
 import { styled } from './styles/theme';
@@ -8,7 +8,7 @@ export function App() {
     <Container className="App">
       <Application>
         <Application.Header.Logo>
-          <Logo />
+          <LogoSvg />
         </Application.Header.Logo>
         <Skeleton />
       </Application>
